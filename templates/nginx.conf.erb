@@ -6,7 +6,7 @@ worker_processes 2;
 pid <%= scope.lookupvar "openresty::config::pidfile" %>;
 
 events {
-  worker_connections 1024;
+  worker_connections 256;
 }
 
 error_log  <%= scope.lookupvar "openresty::config::logdir" %>/error.log debug;
