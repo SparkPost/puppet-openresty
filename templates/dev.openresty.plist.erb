@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>dev.openresty</string>
+
+    <key>openresty</key>
+    <dict>
+      <key>Description</key>
+      <string>Custom bundle of nginx</string>
+    </dict>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string><%= scope.lookupvar "openresty::config::executable" %></string>
+      <string>-c</string>
+      <string><%= scope.lookupvar "openresty::config::configfile" %></string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true />
+
+    <key>KeepAlive</key>
+    <true />
+
+    <key>WorkingDirectory</key>
+    <string><%= scope.lookupvar "openresty::config::datadir" %></string>
+
+    <key>StandardErrorPath</key>
+    <string><%= scope.lookupvar "openresty::config::logdir" %>/console.log</string>
+
+    <key>StandardOutPath</key>
+    <string><%= scope.lookupvar "openresty::config::logdir" %>/console.log</string>
+</dict>
+</plist>
