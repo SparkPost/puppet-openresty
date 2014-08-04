@@ -1,6 +1,6 @@
 # openresty
 
-Installs [openresty|http://openresty.org/], a custom packaged nginx, via homebrew.
+Installs [openresty](http://openresty.org/), a custom packaged nginx, via homebrew.
 
 ## Usage
 
