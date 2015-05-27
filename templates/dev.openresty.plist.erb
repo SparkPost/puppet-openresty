@@ -32,5 +32,11 @@
 
     <key>StandardOutPath</key>
     <string><%= scope.lookupvar "openresty::config::logdir" %>/console.log</string>
+    
+    <key>WatchPaths</key>
+    <array>
+      <string><%= scope.lookupvar "openresty::config::configfile" %></string>
+      <string><%= scope.lookupvar "openresty::config::sitesdir" %></string>
+    </array>
 </dict>
 </plist>
