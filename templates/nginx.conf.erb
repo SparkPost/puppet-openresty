@@ -33,5 +33,5 @@ http {
   gzip_comp_level 2;
   gzip_proxied any;
 
-  include <%= scope.lookupvar "openresty::config::sitesdir" %>/*;
+  include <%= scope.lookupvar "openresty::config::sitesdir" %>/*.conf;
 }
