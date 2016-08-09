@@ -3,7 +3,7 @@ class openresty {
   include homebrew
 
   # tap the brew
-  homebrew::tap { 'killercup/homebrew-openresty': }
+  homebrew::tap { 'homebrew/nginx': }
 
   # custom plist for openresty
   file { '/Library/LaunchDaemons/dev.openresty.plist':
@@ -47,18 +47,25 @@ class openresty {
     ensure  => absent,
     force   => true,
     recurse => true,
-    require => Package['ngx_openresty'],
+    require => Package['openresty'],
+  }
+
+  # remove old openresty
+  package { 'ngx_openresty':
+    ensure => absent,
+    notify => Service['dev.openresty'],
   }
 
   # install openresty
-  package { 'ngx_openresty':
+  package { 'openresty':
     ensure => present,
     notify => Service['dev.openresty'],
+    require => Package['ngx_openresty'],
   }
 
   # set up the service
   service { 'dev.openresty':
     ensure  => running,
-    require => Package['ngx_openresty'],
+    require => Package['openresty'],
   } 
 }
